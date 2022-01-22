@@ -35,10 +35,7 @@ function selectTrack(flag) {
     songs.forEach((song, index) => {
         if (flag === index) {
             initPlayer(song.path);
-        } else {
-            playBtn.classList.add("hide")
-            pauseBtn.classList.remove("hide")
-        }
+        } 
     })
 }
 
@@ -50,20 +47,19 @@ function initPlayer(url) {
         isPlaying = true
         currSong = audio
     }
-
     audio.onpause = () => {
         isPlaying = false
         currSong = null
     }
-
     audio.onended = () => {
         isPlaying = false
         currSong = null
         if (flag < songs.length - 1 ) {
             ++flag
+            selectTrack(flag)
         } else {
             flag = 0
-            musicPlay.click()
+            selectTrack(flag)
         }
     }
 }
