@@ -6,6 +6,10 @@ const songs = [
     {
         name: "1 năm mới bình an",
         path: './assets/music/1nammoibinhan.mp3',
+    },
+    {
+        name: "Happy New Year",
+        path: "./assets/music/HappyNewYear-ABBA.mp3"
     }
 ];
 let isPlaying = false
@@ -43,13 +47,11 @@ function initPlayer(url) {
     audio.play()
     audio.volume = 0.3
     audio.onplay = () => {
-        console.log("playingg", flag)
         isPlaying = true
         currSong = audio
     }
 
     audio.onpause = () => {
-        console.log('paused...')
         isPlaying = false
         currSong = null
     }
