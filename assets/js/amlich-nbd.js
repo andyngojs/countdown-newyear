@@ -121,7 +121,7 @@ TK13 = new Array(
     0x346d56, 0x585aa0, 0x42ab50, 0x2e56d4, 0x544ae0, 0x3ca570, 0x2864d2, 0x4cd260, 0x36eaa6, 0x5ad550,
     0x465aa0, 0x30ada5, 0x5695d0, 0x404ad0, 0x2aa9b3, 0x50a4d0, 0x3ad2b7, 0x5eb250, 0x48b540, 0x33d556
   ) /* Years 2100-2199 */
-const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const months = [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12];
 const FIRST_DAY = jdn(31, 1, 1200)
 const LAST_DAY = jdn(31, 12, 2199)
 const PI = Math.PI

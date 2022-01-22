@@ -11,39 +11,49 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <div class="content-wrapper">
       <h2 class="header">
-        Countdown to new year <span id="newyear-positive">0000</span>
+        Cùng đếm ngược chào năm mới <span id="newyear-positive">0000</span>
       </h2>
-      <h1 class="newyear">0000</h1>
+      <h1 class="newyear">---</h1>
       <div class="time">
         <div class="time-box">
           <div class="time-box__count">
             <span id="days">0</span>
           </div>
-          <div class="time-box__text">Days</div>
+          <div class="time-box__text">Ngày</div>
         </div>
         <div class="time-box">
           <div class="time-box__count">
             <span id="hours">0</span>
           </div>
-          <div class="time-box__text">Hours</div>
+          <div class="time-box__text">Giờ</div>
         </div>
         <div class="time-box">
           <div class="time-box__count">
             <span id="minutes">0</span>
           </div>
-          <div class="time-box__text">Minutes</div>
+          <div class="time-box__text">Phút</div>
         </div>
         <div class="time-box">
           <div class="time-box__count">
             <span id="seconds">0</span>
           </div>
-          <div class="time-box__text">Seconds</div>
+          <div class="time-box__text">Giây</div>
         </div>
+      </div>
+
+      <div class="current-date">
+        <span class="date-positive">----</span>
+        <span class="date-lunar">---</span>
+      </div>
+      <div class="musics">
+        <i class="far fa-play-circle play-btn"></i>
+        <i class="far fa-pause-circle pause-btn hide"></i>
       </div>
     </div>
     <div
@@ -52,6 +62,7 @@
     ></div>
     <script src="./assets/js/fireworks.js"></script>
     <script src="./assets/js/amlich-nbd.js"></script>
+    <script src="./assets/js/handleMusic.js"></script>
     <script src="./assets/js/app.js"></script>
   </body>
 </html>

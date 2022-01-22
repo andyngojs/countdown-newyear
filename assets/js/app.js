@@ -3,8 +3,13 @@ const daySpan = document.querySelector("#days");
 const hourSpan = document.querySelector("#hours");
 const minuteSpan = document.querySelector("#minutes");
 const secondSpan = document.querySelector("#seconds");
+const lunarTimeSpan = document.querySelector(".date-lunar");
+const positiveTimeSpan = document.querySelector(".date-positive");
 const newYearPositive = document.querySelector("#newyear-positive");
 const newYearLunar = document.querySelector(".newyear");
+const musicPlay = document.querySelector(".musics");
+const playBtn = document.querySelector(".play-btn");
+const pauseBtn = document.querySelector(".pause-btn");
 
 const firework = new Fireworks(fireWorkContainer, {
   speech: 4,
@@ -17,10 +22,11 @@ const firework = new Fireworks(fireWorkContainer, {
 
 const nowYear = new Date();
 newYearPositive.innerHTML = nowYear.getFullYear();
-newYearLunar.innerHTML = `Tết ${getYearCanChi(nowYear.getFullYear())}`;
+newYearLunar.innerHTML = getYearCanChi(nowYear.getFullYear());
 
 const datePos = nowYear.getDate();
 const monthPos = months[nowYear.getMonth()];
+const yearPos = nowYear.getFullYear();
 
 const dayLunar = getLunarDate(datePos, monthPos, nowYear.getFullYear()).day
 const monthLunar = getLunarDate(datePos, monthPos, nowYear.getFullYear()).month
@@ -32,9 +38,7 @@ const countdown = () => {
   const distance = countDateTime - nowTime;
 
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor(
-    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
@@ -42,12 +46,15 @@ const countdown = () => {
   hourSpan.innerHTML = hours;
   minuteSpan.innerHTML = minutes;
   secondSpan.innerHTML = seconds;
-
-    if (distance < 0) {
-      clearInterval(countdownInterval);
-    }
+  positiveTimeSpan.innerHTML = `Ngày ${datePos} / ${monthPos} / ${yearPos} - `
+  lunarTimeSpan.innerHTML = `Âm lịch: ${dayLunar} Tháng ${monthLunar} Năm ${nowYear.getFullYear() - 1} 
+    (Năm ${getYearCanChi(nowYear.getFullYear() - 1)})`;
+  if (distance < 0) {
+    clearInterval(countdownInterval);
+  }
 };
 
 firework.start();
 countdown();
+handleEvent();
 const countdownInterval = setInterval(countdown, 1000);
