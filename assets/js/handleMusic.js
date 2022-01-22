@@ -65,8 +65,8 @@ function initPlayer(url) {
 }
 
 window.addEventListener("load", () => {
+    selectTrack(flag);
     playBtn.classList.add("hide")
     pauseBtn.classList.remove("hide")
     pauseBtn.style.animation = 'rotateBtn 2s linear 0.2s infinite'
-    selectTrack(flag);
 })
