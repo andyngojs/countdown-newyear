@@ -16,6 +16,13 @@ let isPlaying = false
 let currSong, flag = 0
 const audio = new Audio()
 
+window.addEventListener("load", () => {
+    selectTrack(flag);
+    playBtn.classList.add("hide")
+    pauseBtn.classList.remove("hide")
+    pauseBtn.style.animation = 'rotateBtn 2s linear 0.2s infinite'
+})
+
 const handleEvent = () => {
     musicPlay.addEventListener("click", (e) => {
         if (isPlaying) {
@@ -41,8 +48,14 @@ function selectTrack(flag) {
 
 function initPlayer(url) {
     audio.src = url
-    audio.play()
-    audio.volume = 0.3
+    let promise = audio.play()
+    if (promise !== undefined) {
+        promise.then(() => {
+            audio.volume = 0.3
+        }).catch(() => {
+            musicPlay.click()
+        })
+    }
     audio.onplay = () => {
         isPlaying = true
         currSong = audio
@@ -63,10 +76,3 @@ function initPlayer(url) {
         }
     }
 }
-
-window.addEventListener("load", () => {
-    selectTrack(flag);
-    playBtn.classList.add("hide")
-    pauseBtn.classList.remove("hide")
-    pauseBtn.style.animation = 'rotateBtn 2s linear 0.2s infinite'
-})
