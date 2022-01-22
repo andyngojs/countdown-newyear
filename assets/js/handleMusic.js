@@ -59,7 +59,11 @@ function initPlayer(url) {
     audio.onended = () => {
         isPlaying = false
         currSong = null
-        flag++
-        musicPlay.click()
+        if (flag < songs.length - 1 ) {
+            ++flag
+        } else {
+            flag = 0
+            musicPlay.click()
+        }
     }
 }

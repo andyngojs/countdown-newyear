@@ -24,16 +24,16 @@ const nowYear = new Date();
 newYearPositive.innerHTML = nowYear.getFullYear();
 newYearLunar.innerHTML = getYearCanChi(nowYear.getFullYear());
 
-const datePos = nowYear.getDate();
-const monthPos = months[nowYear.getMonth()];
-const yearPos = nowYear.getFullYear();
-
-const dayLunar = getLunarDate(datePos, monthPos, nowYear.getFullYear()).day
-const monthLunar = getLunarDate(datePos, monthPos, nowYear.getFullYear()).month
-const yearLunar = getLunarDate(datePos, monthPos, nowYear.getFullYear()).year
-
-const countDateTime = new Date(yearLunar + 1, months[0], 1).getTime();
 const countdown = () => {
+  const datePos = nowYear.getDate();
+  const monthPos = months[nowYear.getMonth()];
+  const yearPos = nowYear.getFullYear();
+  
+  const dayLunar = getLunarDate(datePos, monthPos, nowYear.getFullYear()).day
+  const monthLunar = getLunarDate(datePos, monthPos, nowYear.getFullYear()).month
+  const yearLunar = getLunarDate(datePos, monthPos, nowYear.getFullYear()).year
+  
+  const countDateTime = new Date(yearLunar + 1, months[0], 1).getTime();
   const nowTime = new Date().getTime();
   const distance = countDateTime - nowTime;
 
