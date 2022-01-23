@@ -38,7 +38,7 @@ const handleEvent = () => {
     })
 }
 
-function selectTrack(flag) {
+function  selectTrack(flag) {
     songs.forEach((song, index) => {
         if (flag === index) {
             initPlayer(song.path);
@@ -48,14 +48,8 @@ function selectTrack(flag) {
 
 function initPlayer(url) {
     audio.src = url
-    let promise = audio.play()
-    if (promise !== undefined) {
-        promise.then(() => {
-            audio.volume = 0.3
-        }).catch(() => {
-            musicPlay.click()
-        })
-    }
+    audio.play()
+    audio.volume = 0.3
     audio.onplay = () => {
         isPlaying = true
         currSong = audio
@@ -68,8 +62,7 @@ function initPlayer(url) {
         isPlaying = false
         currSong = null
         if (flag < songs.length - 1 ) {
-            ++flag
-            selectTrack(flag)
+            selectTrack(++flag)
         } else {
             flag = 0
             selectTrack(flag)
