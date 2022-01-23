@@ -16,13 +16,6 @@ let isPlaying = false
 let currSong, flag = 0
 const audio = new Audio()
 
-window.addEventListener("load", () => {
-    selectTrack(flag);
-    playBtn.classList.add("hide")
-    pauseBtn.classList.remove("hide")
-    pauseBtn.style.animation = 'rotateBtn 2s linear 0.2s infinite'
-})
-
 const handleEvent = () => {
     musicPlay.addEventListener("click", (e) => {
         if (isPlaying) {
@@ -41,14 +34,18 @@ const handleEvent = () => {
 function  selectTrack(flag) {
     songs.forEach((song, index) => {
         if (flag === index) {
-            initPlayer(song.path);
+            initPlayer(song.path, (flag) => {
+                selectTrack(flag)
+            });
         } 
     })
 }
 
-function initPlayer(url) {
+function initPlayer(url, callback) {
     audio.src = url
-    audio.play()
+    if (audio.src !== undefined) {
+        audio.play()
+    }
     audio.volume = 0.3
     audio.onplay = () => {
         isPlaying = true
@@ -62,10 +59,10 @@ function initPlayer(url) {
         isPlaying = false
         currSong = null
         if (flag < songs.length - 1 ) {
-            selectTrack(++flag)
+            callback(++flag)
         } else {
             flag = 0
-            selectTrack(flag)
+            callback(flag)
         }
     }
 }
