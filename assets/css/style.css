@@ -172,10 +172,14 @@ body {
   html {
     font-size: 40%;
   }
+  .header {
+    text-align: center;
+  }
   .newyear {
-    font-size: 12rem;
+    font-size: 14rem;
     font-weight: 700;
-    line-height: 1.6;
+    line-height: 1.5;
+    text-align: center;
   }
   .current-date {
     bottom: 30px;
@@ -183,13 +187,17 @@ body {
   .date-positive {
     font-size: 2rem;
     font-weight: 600;
+    text-align: center;
+  }
+  .current-date {
+    text-align: center;
   }
   .date-lunar {
     font-size: 2rem;
     font-weight: 600;
   }
   .musics {
-    bottom: 58px;
+    bottom: 100px;
     right: 36px;
   }
   .musics > i {
