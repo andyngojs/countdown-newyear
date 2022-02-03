@@ -37,20 +37,24 @@ const firework = new Fireworks(fireWorkContainer, {
   explosion: 10,
 });
 
+// Handle timer and calendar lunar
+
 const nowYear = new Date();
-newYearPositive.innerHTML = nowYear.getFullYear();
-newYearLunar.innerHTML = getYearCanChi(nowYear.getFullYear());
+const nextYear = nowYear.getFullYear() + 1
+newYearPositive.innerHTML = nextYear;
+newYearLunar.innerHTML = getYearCanChi(nextYear);
 
 const countdown = () => {
-  const datePos = nowYear.getDate();
-  const monthPos = months[nowYear.getMonth()];
-  const yearPos = nowYear.getFullYear();
+  const currDate = nowYear.getDate();
+  const currMonth = months[nowYear.getMonth()];
+  const currYear = nowYear.getFullYear();
 
-  const dayLunar = getLunarDate(datePos, monthPos, nowYear.getFullYear()).day
-  const monthLunar = getLunarDate(datePos, monthPos, nowYear.getFullYear()).month
-  const yearLunar = getLunarDate(datePos, monthPos, nowYear.getFullYear()).year
+  const currDayLunar = getLunarDate(currDate, currMonth, currYear).day
+  const currMonthLunar = getLunarDate(currDate, currMonth, currYear).month
+  const currYearLunar = getLunarDate(currDate, currMonth, currYear).year
+  const currYearCanChi = getYearCanChi(currYearLunar)
 
-  const countDateTime = new Date(yearLunar + 1, months[0], 1).getTime();
+  const countDateTime = new Date(currYearLunar + 1, months[0], 1).getTime();
   const nowTime = new Date().getTime();
   const distance = countDateTime - nowTime;
 
@@ -63,13 +67,15 @@ const countdown = () => {
   hourSpan.innerHTML = hours;
   minuteSpan.innerHTML = minutes;
   secondSpan.innerHTML = seconds;
-  positiveTimeSpan.innerHTML = `Ngày ${datePos} / ${monthPos} / ${yearPos} - `
-  lunarTimeSpan.innerHTML = `Âm lịch: ${dayLunar} Tháng ${monthLunar} Năm ${nowYear.getFullYear() - 1} 
-    (Năm ${getYearCanChi(nowYear.getFullYear() - 1)})`;
+  positiveTimeSpan.innerHTML = `Ngày ${currDate} / ${currMonth} / ${currYear} - `
+  lunarTimeSpan.innerHTML = `Âm lịch: ${currDayLunar} Tháng ${currMonthLunar} Năm ${currYearLunar} 
+    (Năm ${currYearCanChi})`;
   if (distance < 0) {
     clearInterval(countdownInterval);
   }
 };
+
+// Handle Music 
 
 const handleEvent = () => {
   musicPlay.addEventListener("click", (e) => {
@@ -121,6 +127,8 @@ function initPlayer(url, callback) {
       }
   }
 }
+
+// Run Program
 
 firework.start();
 countdown();
